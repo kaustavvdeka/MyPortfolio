@@ -27,7 +27,7 @@ const About = () => {
 
             <p className="subtext max-w-md">
             I specialize in building smooth, modern, and interactive web experiences.
-            My work focuses on frontend, backend, and 3D web development using the
+            My work focuses on Frontend, Backend, and 3D web development using the
             latest technologies.
             </p>
      </div>
