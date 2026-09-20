@@ -11,34 +11,53 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 import { useMotionValue, useSpring } from "motion/react";
 import { useFrame } from "@react-three/fiber";
 
-export function Astronaut(props) {
+export function Astronaut({ scale = 0.19, position = [1.4, -0.8, 0], scrollProgress = { current: 0 }, isMobile, ...props }) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF(
     "/models/tenhun_falling_spaceman_fanart.glb"
   );
   const { actions } = useAnimations(animations, group);
+
   useEffect(() => {
-    if (animations.length > 0) {
-      actions[animations[0].name]?.play();
+    if (animations && animations.length > 0 && actions) {
+      const animName = animations[0]?.name;
+      if (animName && actions[animName]) {
+        actions[animName].reset().fadeIn(0.5).play();
+      }
     }
   }, [actions, animations]);
 
-  const yPosition = useMotionValue(5);
-  const ySpring = useSpring(yPosition, { damping: 30 });
+  const yPosition = useMotionValue(4);
+  const ySpring = useSpring(yPosition, { damping: 25, stiffness: 60 });
+
   useEffect(() => {
-    ySpring.set(-1);
-  }, [ySpring]);
-  useFrame(() => {
-    group.current.position.y = ySpring.get();
+    ySpring.set(position[1] || -1);
+  }, [ySpring, position]);
+
+  useFrame((state, delta) => {
+    if (!group.current) return;
+    const scroll = scrollProgress.current || 0;
+    
+    // Smooth entry drop + scroll reaction (drifts down & back on scroll)
+    const baseEntryY = ySpring.get();
+    group.current.position.y = baseEntryY - scroll * 3.5;
+    group.current.position.z = (position[2] || 0) - scroll * 2.5;
+    group.current.position.x = (position[0] || 1.3) + scroll * (isMobile ? 0 : 0.8);
+
+    // Dynamic subtle rotation with scroll
+    group.current.rotation.x = -Math.PI / 2 + scroll * 0.8;
+    group.current.rotation.y = -0.2 + scroll * 0.6;
+    group.current.rotation.z = 2.2 + scroll * 1.2;
   });
+
   return (
     <group
       ref={group}
       {...props}
       dispose={null}
       rotation={[-Math.PI / 2, -0.2, 2.2]}
-      scale={props.scale || 0.3}
-      position={props.position || [1.3, -1, 0]}
+      scale={scale}
+      position={position}
     >
       <group name="Sketchfab_Scene">
         <group name="Sketchfab_model">
