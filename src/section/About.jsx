@@ -36,32 +36,48 @@ function BentoCard({ children, className = "" }) {
 
 const philosophies = [
   {
-    icon: "🏗️",
-    title: "Architecture-First",
-    desc: "Designing resilient data flows and modular systems from day one.",
+    icon: "🔬",
+    title: "Theory + Experimentation + Code",
+    desc: "Bridging algorithmic theory and first principles with rapid prototyping and production deployment.",
   },
   {
-    icon: "⚡",
-    title: "60fps Micro-Interactions",
-    desc: "Crafting fluid animations with high visual fidelity and low overhead.",
+    icon: "🏛️",
+    title: "Core CS Fundamentals",
+    desc: "Grounded in DSA, DBMS, Operating Systems, Computer Networks, Compiler Design, and Computation Theory.",
   },
   {
     icon: "🧠",
-    title: "Applied AI Solutions",
-    desc: "Deploying vision and deep learning models to solve real-world problems.",
+    title: "Neural & Vision Mastery",
+    desc: "Exploring the mathematics behind deep neural architectures, YOLO detection, and transfer learning.",
   },
   {
     icon: "🛡️",
-    title: "Type Safety & Clean Code",
-    desc: "Writing maintainable, well-structured, and documented codebases.",
+    title: "Full-Stack Craftsmanship",
+    desc: "Writing modular, scalable, and resilient systems across frontend, backend, APIs, and databases.",
   },
 ];
 
 const highlights = [
-  { label: "Degree", value: "B.Tech CSE '27", icon: "🎓" },
-  { label: "Deployed Apps", value: "5+ Live Systems", icon: "🚀" },
-  { label: "Specialization", value: "AI, Vision & 3D", icon: "🧠" },
-  { label: "Performance", value: "Sub-Second UX", icon: "⚡" },
+  { label: "Institution", value: "Assam University, Silchar", icon: "🏛️" },
+  { label: "Core Focus", value: "AI, Vision & Full-Stack", icon: "🧠" },
+  { label: "CS Fundamentals", value: "DSA, OS, DBMS & Systems", icon: "🔬" },
+  { label: "Mindset", value: "Curious, Adaptable & Impact-Driven", icon: "⚡" },
+];
+
+const techBadges = [
+  "Python",
+  "C++",
+  "JavaScript",
+  "React",
+  "Node.js",
+  "Next.js",
+  "FastAPI",
+  "TensorFlow",
+  "Keras",
+  "OpenCV",
+  "Scikit-learn",
+  "MongoDB",
+  "SQL",
 ];
 
 const About = () => {
@@ -81,19 +97,19 @@ const About = () => {
       >
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-3 rounded-full border border-cyan-500/30 bg-cyan-950/40 text-xs font-semibold text-cyan-400 tracking-widest uppercase shadow-[0_0_15px_rgba(6,182,212,0.2)]">
           <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-          <span>Identity & Philosophy</span>
+          <span>Profile & Technical Philosophy</span>
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
           About <span className="bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">Me</span>
         </h2>
         <p className="subtext mt-2 max-w-xl">
-          A deeper look into my engineering principles, creative workflow, and commitment to building intelligent digital products.
+          A deeper insight into my computer science journey, artificial intelligence research, full-stack craftsmanship, and engineering mindset.
         </p>
       </motion.div>
 
       {/* Modern Unified Bento Grid */}
       <div className="grid grid-cols-1 md:grid-cols-6 gap-5 mt-8">
-        {/* Card 1: Bio & Engineering Narrative (4 Cols on MD) */}
+        {/* Card 1: Comprehensive Bio & Engineering Narrative (4 Cols on MD) */}
         <BentoCard className="md:col-span-4">
           <div className="relative p-7 sm:p-9 rounded-2xl bg-[#080c24]/90 border border-white/[0.08] hover:border-cyan-500/40 transition-all duration-300 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col justify-between h-full group">
             {/* Cyber Corner Crosshairs */}
@@ -105,41 +121,65 @@ const About = () => {
             <div>
               {/* Status Badge */}
               <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-[11px] font-semibold text-cyan-300 uppercase tracking-widest">
-                <span>⚡ Creative Developer & AI/ML Engineer</span>
+                <span>⚡ CSE Undergrad • Assam University, Silchar</span>
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4">
-                Hi, I'm <span className="bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">Kaustav Mani Deka</span>
+                Engineering at the Confluence of{" "}
+                <span className="bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+                  AI, Vision & Scalable Systems
+                </span>
               </h3>
 
               <p className="text-sm sm:text-base text-neutral-300 font-light leading-relaxed mb-4">
-                I am a Computer Science & Engineering undergrad specializing in building high-performance web applications, 3D WebGL user interfaces, and computer vision systems.
+                I am a <strong>Computer Science & Engineering undergraduate at Assam University, Silchar</strong>, deeply fascinated by how technology functions from mathematical first principles up to high-throughput production architectures. I specialize in <strong>Artificial Intelligence, Machine Learning, Computer Vision, Full-Stack Development, and Software Engineering</strong>.
+              </p>
+
+              <p className="text-sm sm:text-base text-neutral-300 font-light leading-relaxed mb-4">
+                My technical foundation spans <strong>Python, C++, JavaScript, React, Node.js, Express.js, Next.js, FastAPI, MongoDB, SQL, TensorFlow, Keras, Scikit-learn, and OpenCV</strong>. I thrive working across the entire development spectrum—architecting responsive, 60fps user interfaces, engineering resilient backend microservices, managing databases, and integrating intelligent vision models into production.
               </p>
 
               <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed">
-                From training YOLO & MobileNetV2 models for regional agriculture and smart-city air intelligence, to engineering interactive 3D WebGL experiences with React and Three.js, I thrive at the intersection of computational engineering and design elegance.
+                In <strong>Deep Learning & Vision AI</strong>, I actively investigate neural networks, YOLO object detection, transfer learning, and image classification—not merely utilizing pre-built models, but mastering the mathematical rigor, loss optimization, and feature dynamics beneath them.
               </p>
             </div>
 
-            {/* Quick Metrics / Highlights Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8 pt-6 border-t border-white/[0.08]">
+            {/* Core Tech Stack Micro-Chips */}
+            <div className="mt-6 pt-5 border-t border-white/[0.08]">
+              <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-widest mb-2.5">
+                Core Technologies & Tools
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {techBadges.map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-xs px-2.5 py-1 rounded-lg bg-white/[0.03] border border-white/[0.08] text-neutral-300 hover:border-cyan-400/40 hover:text-cyan-200 transition-colors"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Key Attributes Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-5 border-t border-white/[0.08]">
               {highlights.map((item) => (
                 <div
                   key={item.label}
                   className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-cyan-500/30 transition-all"
                 >
-                  <div className="flex items-center gap-1.5 text-xs text-neutral-400 mb-1">
+                  <div className="flex items-center gap-1.5 text-[11px] text-neutral-400 mb-1">
                     <span>{item.icon}</span>
-                    <span>{item.label}</span>
+                    <span className="truncate">{item.label}</span>
                   </div>
-                  <p className="text-sm font-bold text-cyan-300 truncate">{item.value}</p>
+                  <p className="text-xs font-bold text-cyan-300 truncate">{item.value}</p>
                 </div>
               ))}
             </div>
           </div>
         </BentoCard>
 
-        {/* Card 2: Engineering Philosophy & Principles (2 Cols on MD) */}
+        {/* Card 2: Engineering Philosophy & CS Foundations (2 Cols on MD) */}
         <BentoCard className="md:col-span-2">
           <div className="relative p-7 sm:p-8 rounded-2xl bg-[#080c24]/90 border border-white/[0.08] hover:border-purple-500/40 transition-all duration-300 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col justify-between h-full group">
             {/* Cyber Corner Crosshairs */}
@@ -150,18 +190,18 @@ const About = () => {
 
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border border-purple-500/30 bg-purple-950/30 text-[11px] font-semibold text-purple-300 uppercase tracking-widest">
-                <span>💡 Core Mindset</span>
+                <span>💡 CS Foundations & Method</span>
               </div>
 
               <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-5">
-                How I Build
+                Core Philosophy
               </h3>
 
               <div className="space-y-3.5">
                 {philosophies.map((phil) => (
                   <div
                     key={phil.title}
-                    className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-purple-500/30 hover:bg-purple-500/5 transition-all group/item"
+                    className="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-purple-500/30 hover:bg-purple-500/5 transition-all group/item"
                   >
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-base">{phil.icon}</span>
@@ -175,6 +215,16 @@ const About = () => {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Core CS Domains Footer */}
+            <div className="mt-6 pt-4 border-t border-white/[0.08]">
+              <p className="text-[10px] uppercase tracking-wider text-purple-300 font-semibold mb-1">
+                Core CS Domains
+              </p>
+              <p className="text-[11px] text-neutral-400 font-light leading-snug">
+                DSA • OS • DBMS • Computer Networks • Compiler Design • Theory of Computation
+              </p>
             </div>
           </div>
         </BentoCard>
@@ -191,7 +241,7 @@ const About = () => {
             <div className="relative z-10">
               <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border border-emerald-500/30 bg-emerald-950/30 text-[11px] font-semibold text-emerald-300 uppercase tracking-widest">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                <span>Global Remote Ready</span>
+                <span>Global Remote Collaboration</span>
               </div>
 
               <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-2">
@@ -199,7 +249,7 @@ const About = () => {
               </h3>
 
               <p className="text-xs sm:text-sm text-neutral-300 font-light max-w-xs leading-relaxed">
-                Based in <span className="text-cyan-300 font-medium">Assam, India (IST / UTC+5:30)</span>. Available for remote engineering opportunities and global team collaborations.
+                Based in <span className="text-cyan-300 font-medium">Silchar, Assam, India (IST / UTC+5:30)</span>. Adaptable and eager to contribute to forward-thinking distributed engineering teams worldwide.
               </p>
             </div>
 
@@ -211,13 +261,13 @@ const About = () => {
             <div className="relative z-10 pt-6">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-xs text-neutral-300 font-mono">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
-                <span>Active & Communicative</span>
+                <span>Curious • Adaptable • Problem-Solver</span>
               </div>
             </div>
           </div>
         </BentoCard>
 
-        {/* Card 4: Let's Connect / Collaboration CTA (3 Cols on MD) */}
+        {/* Card 4: Professional Interests & Collaboration CTA (3 Cols on MD) */}
         <BentoCard className="md:col-span-3">
           <div className="relative p-7 sm:p-8 rounded-2xl bg-[#080c24]/90 border border-white/[0.08] hover:border-cyan-500/40 transition-all duration-300 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col justify-between h-full group min-h-[300px]">
             {/* Cyber Corner Crosshairs */}
@@ -232,15 +282,15 @@ const About = () => {
               </div>
 
               <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-2">
-                Have an Exciting Project in Mind?
+                Interested in Solving Challenging Problems?
               </h3>
 
               <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed mb-6">
-                Whether you need a full-stack web application, an AI/ML pipeline deployment, or an interactive 3D WebGL product, let's create something extraordinary.
+                Whether deploying deep learning computer vision architectures, developing full-stack software products, or building innovative AI systems with real-world impact, let's create something transformative.
               </p>
             </div>
 
-            {/* Action Buttons: Copy Email + Direct Links */}
+            {/* Action Buttons: Copy Email + Direct Mail */}
             <div className="flex flex-wrap items-center gap-3">
               <CopyEmailButton />
 

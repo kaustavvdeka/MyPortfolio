@@ -2,11 +2,11 @@ import { FlipWords } from "./Flipword";
 import { motion, useScroll, useTransform } from "motion/react";
 
 const HeroText = () => {
-  const words = ["Innovative", "Dynamic", "Creative", "Modern"];
+  const words = ["Intelligent", "Scalable", "Vision-Driven", "Innovative"];
   const interactiveWords = [
     "Full-Stack Developer",
-    "Creative Technologist",
-    "UI/UX Enthusiast",
+    "AI & Vision Engineer",
+    "Software Engineer",
     "3D Web Specialist",
   ];
 
@@ -45,7 +45,7 @@ const HeroText = () => {
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </span>
-        <span className="font-medium tracking-wide">Available for new opportunities</span>
+        <span className="font-medium tracking-wide">Available for innovative opportunities</span>
       </motion.div>
 
       {/* Desktop Layout */}
@@ -68,7 +68,7 @@ const HeroText = () => {
             animate="visible"
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            Crafting Digital Experiences
+            Engineering Systems
           </motion.p>
 
           <motion.div
@@ -92,7 +92,7 @@ const HeroText = () => {
             animate="visible"
             transition={{ duration: 0.6, delay: 1.0 }}
           >
-            & Visually Inspiring
+            & Impact-Driven
           </motion.p>
         </div>
 
@@ -113,7 +113,7 @@ const HeroText = () => {
             />
           </div>
           <p className="text-sm text-neutral-500 mt-1 max-w-lg">
-            Blending clean architectural design with interactive 3D WebGL experiences and high-performance applications.
+            Synthesizing Artificial Intelligence, Computer Vision, and modern Full-Stack engineering to solve complex real-world problems.
           </p>
         </motion.div>
 
