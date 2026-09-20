@@ -393,10 +393,10 @@ const Work = () => {
             {/* Left Arrow Button (Vertically centered on the left edge) */}
             <button
               onClick={handlePrev}
-              className="absolute -left-3 sm:-left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-[#080c24]/90 hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.8),0_0_15px_rgba(56,189,248,0.25)] cursor-pointer hover:scale-110 active:scale-95 backdrop-blur-xl"
+              className="absolute -left-2 sm:-left-6 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#080c24]/90 hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.8),0_0_15px_rgba(56,189,248,0.25)] cursor-pointer hover:scale-110 active:scale-95 backdrop-blur-xl"
               aria-label="Previous project"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
@@ -404,10 +404,10 @@ const Work = () => {
             {/* Right Arrow Button (Vertically centered on the right edge) */}
             <button
               onClick={handleNext}
-              className="absolute -right-3 sm:-right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-[#080c24]/90 hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.8),0_0_15px_rgba(56,189,248,0.25)] cursor-pointer hover:scale-110 active:scale-95 backdrop-blur-xl"
+              className="absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#080c24]/90 hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.8),0_0_15px_rgba(56,189,248,0.25)] cursor-pointer hover:scale-110 active:scale-95 backdrop-blur-xl"
               aria-label="Next project"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
               </svg>
             </button>

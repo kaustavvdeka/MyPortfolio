@@ -53,6 +53,7 @@ body {
   color: white;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
   background-image: 
     radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.12), transparent),
     radial-gradient(circle at 10% 30%, rgba(99, 102, 241, 0.08), transparent 40%),
@@ -62,6 +63,60 @@ body {
   background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
 }
 
+/* Light Mode Theme Overrides */
+html.light-mode body {
+  background: #f1f5f9;
+  color: #0f172a;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(14, 165, 233, 0.15), transparent),
+    radial-gradient(circle at 10% 30%, rgba(99, 102, 241, 0.08), transparent 40%),
+    radial-gradient(circle at 90% 70%, rgba(168, 85, 247, 0.08), transparent 40%),
+    linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+}
+
+html.light-mode .text-white {
+  color: #0f172a !important;
+}
+
+html.light-mode .text-neutral-300,
+html.light-mode .text-neutral-200 {
+  color: #334155 !important;
+}
+
+html.light-mode .text-neutral-400,
+html.light-mode .subtext {
+  color: #64748b !important;
+}
+
+html.light-mode .bg-\[\#080c24\]\/90,
+html.light-mode .bg-\[\#080c24\],
+html.light-mode .whatido-card,
+html.light-mode .milestone-3d-card,
+html.light-mode .project-showcase-card {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(14, 165, 233, 0.25) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06), 0 0 20px rgba(56, 189, 248, 0.1) !important;
+}
+
+html.light-mode .bg-white\/\[0\.03\],
+html.light-mode .bg-white\/\[0\.04\] {
+  background-color: rgba(241, 245, 249, 0.8) !important;
+  border-color: rgba(14, 165, 233, 0.18) !important;
+}
+
+html.light-mode .border-white\/\[0\.08\],
+html.light-mode .border-white\/10,
+html.light-mode .border-white\/15 {
+  border-color: rgba(14, 165, 233, 0.2) !important;
+}
+
+html.light-mode .bg-\[\#030412\]\/80,
+html.light-mode .bg-\[\#030412\]\/95 {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(14, 165, 233, 0.25) !important;
+}
+
 /* Custom Sleek Scrollbar */
 ::-webkit-scrollbar {
   width: 7px;
@@ -69,18 +124,21 @@ body {
 ::-webkit-scrollbar-track {
   background: #030412;
 }
+html.light-mode ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
 ::-webkit-scrollbar-thumb {
-  background: rgba(56, 189, 248, 0.25);
+  background: rgba(56, 189, 248, 0.35);
   border-radius: 9999px;
-  border: 1px solid rgba(56, 189, 248, 0.4);
+  border: 1px solid rgba(56, 189, 248, 0.5);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(56, 189, 248, 0.5);
+  background: rgba(56, 189, 248, 0.6);
   box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
 }
 
 .c-space {
-  @apply sm:px-10 px-5 lg:px-15;
+  @apply sm:px-10 px-4 lg:px-15;
 }
 
 .hover-animation {
@@ -88,19 +146,19 @@ body {
 }
 
 .section-spacing {
-  @apply min-h-screen mt-20 md:mt-30;
+  @apply min-h-screen mt-16 md:mt-28;
 }
 
 .text-heading {
-  @apply font-bold text-3xl md:text-4xl;
+  @apply font-bold text-2xl sm:text-3xl md:text-4xl;
 }
 
 .headtext {
-  @apply mt-2 mb-2 text-xl;
+  @apply mt-2 mb-2 text-lg sm:text-xl;
 }
 
 .subtext {
-  @apply text-neutral-400 text-sm md:text-base text-pretty;
+  @apply text-neutral-400 text-xs sm:text-sm md:text-base text-pretty;
 }
 
 /* Navigation */
@@ -115,48 +173,12 @@ body {
 .nav-link {
   @apply text-lg md:text-base hover:text-white transition-colors;
 }
-/* Button Components */
-.btn {
-  @apply relative px-1 py-4 text-sm text-center rounded-full font-extralight bg-primary w-[12rem] cursor-pointer overflow-hidden;
-}
 
-/* About Section */
-.grid-1 {
-  @apply row-span-2 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
-}
-.grid-2 {
-  @apply row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
-}
-.grid-3 {
-  @apply row-span-1 md:col-span-3 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
-}
-.grid-4 {
-  @apply row-span-1 md:col-span-2 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
-}
-.grid-5 {
-  @apply row-span-1 md:col-span-4 h-[15rem] md:h-full relative overflow-hidden hover:-translate-y-1 duration-200;
-}
-
-.grid-default-color {
-  @apply p-6 bg-gradient-to-b from-storm to-indigo rounded-2xl;
-}
-
-.grid-special-color {
-  @apply p-6 bg-gradient-to-b from-royal to-lavender rounded-2xl;
-}
-.grid-black-color {
-  @apply p-6 bg-gradient-to-tl from-[#3A3A3A] via-[#242424] to-[#3A3A3A] rounded-2xl;
-}
-
-/* Contact Section*/
-.field-label {
-  @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
-}
-
-.field-input {
-  @apply w-full min-h-10 rounded-md px-3 py-2 text-sm bg-white/10 transition duration-200 placeholder-neutral-500 border border-white/10 mt-2;
-}
-
-.field-input-focus {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20;
+/* Mobile Touch Optimization */
+@media (max-width: 640px) {
+  .section-spacing {
+    min-height: auto;
+    margin-top: 4.5rem;
+    margin-bottom: 3.5rem;
+  }
 }
