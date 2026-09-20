@@ -126,12 +126,12 @@ const HeroText = () => {
           transition={{ duration: 0.6, delay: 1.4 }}
         >
           <button
-            onClick={() => scrollToSection("projects")}
-            className="cursor-pointer group relative px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium text-sm shadow-[0_0_25px_rgba(6,182,212,0.4)] hover:shadow-[0_0_35px_rgba(6,182,212,0.6)] transition-all duration-300 flex items-center gap-2 hover:scale-105 active:scale-95"
+            onClick={() => scrollToSection("work")}
+            className="cursor-pointer group relative px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500/20 via-indigo-500/25 to-purple-500/20 hover:from-cyan-500/30 hover:to-purple-500/30 text-white font-semibold text-sm border border-cyan-400/50 hover:border-cyan-300 shadow-[0_0_20px_rgba(56,189,248,0.25)] hover:shadow-[0_0_30px_rgba(56,189,248,0.45)] backdrop-blur-xl transition-all duration-300 flex items-center gap-2 hover:scale-105 active:scale-95"
           >
-            <span>Explore Projects</span>
+            <span>Explore Work</span>
             <svg
-              className="w-4 h-4 transition-transform group-hover:translate-x-1"
+              className="w-4 h-4 text-cyan-300 transition-transform group-hover:translate-x-1"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -142,7 +142,7 @@ const HeroText = () => {
 
           <button
             onClick={() => scrollToSection("about")}
-            className="cursor-pointer px-6 py-3 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-neutral-200 hover:text-white font-medium text-sm backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:scale-105 active:scale-95"
+            className="cursor-pointer px-6 py-3 rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white/[0.09] text-neutral-300 hover:text-white font-medium text-sm backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:scale-105 active:scale-95"
           >
             About Me
           </button>
@@ -204,17 +204,17 @@ const HeroText = () => {
           className="pt-2 flex items-center gap-3"
         >
           <button
-            onClick={() => scrollToSection("projects")}
-            className="cursor-pointer px-4 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium text-xs shadow-lg shadow-cyan-500/25 flex items-center gap-1.5 active:scale-95"
+            onClick={() => scrollToSection("work")}
+            className="cursor-pointer px-4 py-2.5 rounded-lg bg-gradient-to-r from-cyan-500/25 via-indigo-500/30 to-purple-500/25 border border-cyan-400/50 text-white font-semibold text-xs shadow-[0_0_15px_rgba(56,189,248,0.2)] flex items-center gap-1.5 active:scale-95"
           >
-            <span>Projects</span>
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <span>My Work</span>
+            <svg className="w-3.5 h-3.5 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </button>
           <button
             onClick={() => scrollToSection("about")}
-            className="cursor-pointer px-4 py-2.5 rounded-lg border border-white/20 bg-white/5 text-neutral-300 text-xs backdrop-blur-md active:scale-95"
+            className="cursor-pointer px-4 py-2.5 rounded-lg border border-white/20 bg-white/[0.04] text-neutral-300 text-xs backdrop-blur-md active:scale-95"
           >
             About Me
           </button>

@@ -1,13 +1,12 @@
 import React from "react";
 import Navbar from "./section/NavBar";
 import Hero from "./section/Hero";
+import WhatIDo from "./section/WhatIDo";
+import Work from "./section/Work";
+import TechStack from "./section/TechStack";
+import Career from "./section/Career";
 import About from "./section/About";
-import Projects from "./section/Projects";
 import { LoadingProvider } from "./context/LoadingContext";
-// import Experiences from "./section/Experiences";
-// import Testimonial from "./section/Testimonial";
-// import Contact from "./section/Contact";
-// import Footer from './section/Footer';
 
 const App = () => {
   return (
@@ -15,12 +14,11 @@ const App = () => {
       <div className="container mx-auto max-w-7xl">
         <Navbar />
         <Hero />
+        <WhatIDo />
+        <Work />
+        <TechStack />
+        <Career />
         <About />
-        <Projects />
-        {/*   <Experiences />
-        <Testimonial />
-        <Contact />
-        <Footer/> */}
       </div>
     </LoadingProvider>
   );
