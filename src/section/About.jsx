@@ -1,8 +1,6 @@
 import { useRef } from "react";
-import Card from "../components/Card";
 import { Globe } from "../components/globe";
 import CopyEmailButton from "../components/CopyEmailButton";
-import { Frameworks } from "../components/FrameWorks";
 import { motion, useScroll, useTransform } from "motion/react";
 
 function BentoCard({ children, className = "" }) {
@@ -36,14 +34,42 @@ function BentoCard({ children, className = "" }) {
   );
 }
 
-const About = () => {
-  const grid2Container = useRef();
+const philosophies = [
+  {
+    icon: "🏗️",
+    title: "Architecture-First",
+    desc: "Designing resilient data flows and modular systems from day one.",
+  },
+  {
+    icon: "⚡",
+    title: "60fps Micro-Interactions",
+    desc: "Crafting fluid animations with high visual fidelity and low overhead.",
+  },
+  {
+    icon: "🧠",
+    title: "Applied AI Solutions",
+    desc: "Deploying vision and deep learning models to solve real-world problems.",
+  },
+  {
+    icon: "🛡️",
+    title: "Type Safety & Clean Code",
+    desc: "Writing maintainable, well-structured, and documented codebases.",
+  },
+];
 
+const highlights = [
+  { label: "Degree", value: "B.Tech CSE '27", icon: "🎓" },
+  { label: "Deployed Apps", value: "5+ Live Systems", icon: "🚀" },
+  { label: "Specialization", value: "AI, Vision & 3D", icon: "🧠" },
+  { label: "Performance", value: "Sub-Second UX", icon: "⚡" },
+];
+
+const About = () => {
   return (
     <section className="relative c-space section-spacing scroll-mt-24" id="about">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[140px] pointer-events-none" />
+      {/* Background ambient cosmic lighting */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Header */}
       <motion.div
@@ -61,153 +87,172 @@ const About = () => {
           About <span className="bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">Me</span>
         </h2>
         <p className="subtext mt-2 max-w-xl">
-          Passionate about building intuitive digital experiences, intelligent software architectures, and clean scalable systems.
+          A deeper look into my engineering principles, creative workflow, and commitment to building intelligent digital products.
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:auto-rows-[18rem] mt-6">
-        {/* Grid 1 */}
-        <BentoCard className="md:col-span-4 md:row-span-2">
-          <div className="flex items-end grid-default-color grid-1 w-full h-full relative overflow-hidden">
-            <img
-              src="assets/coding-pov.png"
-              alt="Coding POV"
-              className="absolute scale-[1.75] -right-20 -top-4 md:scale-[3] md:left-50 md:inset-y-10 lg:scale-[2.5]"
-            />
+      {/* Modern Unified Bento Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-6 gap-5 mt-8">
+        {/* Card 1: Bio & Engineering Narrative (4 Cols on MD) */}
+        <BentoCard className="md:col-span-4">
+          <div className="relative p-7 sm:p-9 rounded-2xl bg-[#080c24]/90 border border-white/[0.08] hover:border-cyan-500/40 transition-all duration-300 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col justify-between h-full group">
+            {/* Cyber Corner Crosshairs */}
+            <div className="cyber-corner-tl" />
+            <div className="cyber-corner-tr" />
+            <div className="cyber-corner-bl" />
+            <div className="cyber-corner-br" />
 
-            {/* TEXT CONTENT */}
-            <div className="z-10 space-y-3 p-6 sm:p-8" style={{ transform: "translateZ(25px)" }}>
-              {/* Interactive typing text */}
-              <p className="headtext">
-                <span className="text-indigo-400">Hi, I'm Kaustav —</span>{" "}
-                <span className="typing-text">a Creative Developer</span>
+            <div>
+              {/* Status Badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-[11px] font-semibold text-cyan-300 uppercase tracking-widest">
+                <span>⚡ Creative Developer & AI/ML Engineer</span>
+              </div>
+
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-4">
+                Hi, I'm <span className="bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">Kaustav Mani Deka</span>
+              </h3>
+
+              <p className="text-sm sm:text-base text-neutral-300 font-light leading-relaxed mb-4">
+                I am a Computer Science & Engineering undergrad specializing in building high-performance web applications, 3D WebGL user interfaces, and computer vision systems.
               </p>
 
-              <p className="subtext max-w-md">
-                I specialize in building smooth, modern, and interactive web experiences.
-                My work focuses on Frontend, Backend, AI/ML, and 3D WebGL graphics using the
-                latest technologies.
+              <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed">
+                From training YOLO & MobileNetV2 models for regional agriculture and smart-city air intelligence, to engineering interactive 3D WebGL experiences with React and Three.js, I thrive at the intersection of computational engineering and design elegance.
               </p>
             </div>
 
-            <div className="absolute inset-x-0 pointer-events-none -bottom-4 h-1/2 sm:h-1/3 bg-gradient-to-t from-[#02030a]" />
-          </div>
-        </BentoCard>
-
-        {/* Grid 2 */}
-        <BentoCard className="md:col-span-2 md:row-span-2">
-          <div className="grid-default-color grid-2 w-full h-full relative overflow-hidden">
-            <div
-              ref={grid2Container}
-              className="relative flex items-center justify-center w-full h-full"
-            >
-              {/* INTERACTIVE TEXT */}
-              <p className="flex items-end text-3xl sm:text-4xl font-semibold text-indigo-400 typing-title">
-                BUILD • BREAK • INNOVATE
-              </p>
-
-              {/* Cards */}
-              <Card
-                style={{ rotate: "75deg", top: "30%", left: "20%" }}
-                text="CLEAN CODE"
-                containerRef={grid2Container}
-              />
-              <Card
-                style={{ rotate: "-30deg", top: "60%", left: "45%" }}
-                text="SOLID PRINCIPLES"
-                containerRef={grid2Container}
-              />
-              <Card
-                style={{ rotate: "90deg", bottom: "30%", left: "70%" }}
-                text="SYSTEM DESIGN"
-                containerRef={grid2Container}
-              />
-              <Card
-                style={{ rotate: "-45deg", top: "55%", left: "0%" }}
-                text="ARCHITECTURE"
-                containerRef={grid2Container}
-              />
-              <Card
-                style={{ rotate: "20deg", top: "10%", left: "38%" }}
-                text="OOP MASTERY"
-                containerRef={grid2Container}
-              />
-              <Card
-                style={{ rotate: "30deg", top: "70%", left: "70%" }}
-                image="assets/logos/csharp-pink.png"
-                containerRef={grid2Container}
-              />
-              <Card
-                style={{ rotate: "-45deg", top: "70%", left: "25%" }}
-                image="assets/logos/dotnet-pink.png"
-                containerRef={grid2Container}
-              />
-              <Card
-                style={{ rotate: "-45deg", top: "5%", left: "10%" }}
-                image="assets/logos/blazor-pink.png"
-                containerRef={grid2Container}
-              />
+            {/* Quick Metrics / Highlights Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8 pt-6 border-t border-white/[0.08]">
+              {highlights.map((item) => (
+                <div
+                  key={item.label}
+                  className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-cyan-500/30 transition-all"
+                >
+                  <div className="flex items-center gap-1.5 text-xs text-neutral-400 mb-1">
+                    <span>{item.icon}</span>
+                    <span>{item.label}</span>
+                  </div>
+                  <p className="text-sm font-bold text-cyan-300 truncate">{item.value}</p>
+                </div>
+              ))}
             </div>
           </div>
         </BentoCard>
 
-        {/* Grid 3 */}
-        <BentoCard className="md:col-span-3 md:row-span-1">
-          <div className="grid-black-color grid-3 relative overflow-hidden w-full h-full">
-            <div className="z-10 w-[55%] space-y-3 p-6 sm:p-8" style={{ transform: "translateZ(25px)" }}>
-              {/* INTERACTIVE TITLE */}
-              <p className="headtext interactive-title text-xl sm:text-2xl font-bold">
-                Time Zone & Availability
-              </p>
+        {/* Card 2: Engineering Philosophy & Principles (2 Cols on MD) */}
+        <BentoCard className="md:col-span-2">
+          <div className="relative p-7 sm:p-8 rounded-2xl bg-[#080c24]/90 border border-white/[0.08] hover:border-purple-500/40 transition-all duration-300 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col justify-between h-full group">
+            {/* Cyber Corner Crosshairs */}
+            <div className="cyber-corner-tl" />
+            <div className="cyber-corner-tr" />
+            <div className="cyber-corner-bl" />
+            <div className="cyber-corner-br" />
 
-              {/* INTERACTIVE SUB TEXT */}
-              <p className="subtext floating-text text-xs sm:text-sm">
-                Currently based in <span className="text-cyan-400 font-semibold">India (IST / UTC+5:30)</span>.
-                Open to worldwide remote work and global collaborations.
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border border-purple-500/30 bg-purple-950/30 text-[11px] font-semibold text-purple-300 uppercase tracking-widest">
+                <span>💡 Core Mindset</span>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-5">
+                How I Build
+              </h3>
+
+              <div className="space-y-3.5">
+                {philosophies.map((phil) => (
+                  <div
+                    key={phil.title}
+                    className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-purple-500/30 hover:bg-purple-500/5 transition-all group/item"
+                  >
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-base">{phil.icon}</span>
+                      <h4 className="text-xs font-bold text-neutral-200 group-hover/item:text-purple-300 transition-colors">
+                        {phil.title}
+                      </h4>
+                    </div>
+                    <p className="text-[11px] text-neutral-400 font-light leading-snug">
+                      {phil.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </BentoCard>
+
+        {/* Card 3: Timezone & Global Availability (3 Cols on MD) */}
+        <BentoCard className="md:col-span-3">
+          <div className="relative p-7 sm:p-8 rounded-2xl bg-[#080c24]/90 border border-white/[0.08] hover:border-cyan-500/40 transition-all duration-300 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col justify-between h-full overflow-hidden group min-h-[300px]">
+            {/* Cyber Corner Crosshairs */}
+            <div className="cyber-corner-tl" />
+            <div className="cyber-corner-tr" />
+            <div className="cyber-corner-bl" />
+            <div className="cyber-corner-br" />
+
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border border-emerald-500/30 bg-emerald-950/30 text-[11px] font-semibold text-emerald-300 uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                <span>Global Remote Ready</span>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-2">
+                Timezone & Availability
+              </h3>
+
+              <p className="text-xs sm:text-sm text-neutral-300 font-light max-w-xs leading-relaxed">
+                Based in <span className="text-cyan-300 font-medium">Assam, India (IST / UTC+5:30)</span>. Available for remote engineering opportunities and global team collaborations.
               </p>
             </div>
 
-            {/* FLOATING GLOBE */}
-            <figure className="absolute left-[35%] top-[5%] animate-globe-float pointer-events-none">
+            {/* Orbiting Interactive Globe */}
+            <div className="absolute -right-16 -bottom-16 w-72 h-72 pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity">
               <Globe />
-            </figure>
+            </div>
+
+            <div className="relative z-10 pt-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-xs text-neutral-300 font-mono">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
+                <span>Active & Communicative</span>
+              </div>
+            </div>
           </div>
         </BentoCard>
 
-        {/* Grid 4 */}
-        <BentoCard className="md:col-span-3 md:row-span-1">
-          <div className="grid-special-color grid-4 w-full h-full relative overflow-hidden">
-            <div className="flex flex-col items-center justify-center gap-4 size-full p-6" style={{ transform: "translateZ(25px)" }}>
-              <p className="text-center headtext text-xl sm:text-2xl font-bold">
-                Do you want to start a project together?
+        {/* Card 4: Let's Connect / Collaboration CTA (3 Cols on MD) */}
+        <BentoCard className="md:col-span-3">
+          <div className="relative p-7 sm:p-8 rounded-2xl bg-[#080c24]/90 border border-white/[0.08] hover:border-cyan-500/40 transition-all duration-300 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex flex-col justify-between h-full group min-h-[300px]">
+            {/* Cyber Corner Crosshairs */}
+            <div className="cyber-corner-tl" />
+            <div className="cyber-corner-tr" />
+            <div className="cyber-corner-bl" />
+            <div className="cyber-corner-br" />
+
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-[11px] font-semibold text-cyan-300 uppercase tracking-widest">
+                <span>🤝 Let's Collaborate</span>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-2">
+                Have an Exciting Project in Mind?
+              </h3>
+
+              <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed mb-6">
+                Whether you need a full-stack web application, an AI/ML pipeline deployment, or an interactive 3D WebGL product, let's create something extraordinary.
               </p>
+            </div>
+
+            {/* Action Buttons: Copy Email + Direct Links */}
+            <div className="flex flex-wrap items-center gap-3">
               <CopyEmailButton />
-            </div>
-          </div>
-        </BentoCard>
 
-        {/* Grid 5 */}
-        <BentoCard className="md:col-span-6 md:row-span-1">
-          <div className="grid-default-color grid-5 relative overflow-hidden w-full h-full">
-            <div className="z-10 w-[55%] space-y-3 p-6 sm:p-8" style={{ transform: "translateZ(25px)" }}>
-              {/* INTERACTIVE TITLE */}
-              <p className="headtext interactive-stack-title text-xl sm:text-2xl font-bold">
-                Tech Ecosystem
-              </p>
-
-              {/* INTERACTIVE SUBTEXT */}
-              <p className="subtext interactive-stack-sub text-xs sm:text-sm max-w-lg">
-                I work across a modern ecosystem of
-                <span className="highlighted-word text-cyan-300"> languages</span>,
-                <span className="highlighted-word text-purple-300"> frameworks</span>,
-                and powerful <span className="highlighted-word text-emerald-300">AI / developer tools</span>
-                {" "}to build fast, scalable, and efficient applications.
-              </p>
-            </div>
-
-            {/* Frameworks Globe */}
-            <div className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125 animate-tech-float">
-              <Frameworks />
+              <a
+                href="mailto:kaustav.mani.deka@aus.ac.in"
+                className="cursor-pointer px-4 py-3.5 rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white/[0.09] text-neutral-300 hover:text-white font-medium text-xs sm:text-sm tracking-wide backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:scale-105 active:scale-95 flex items-center gap-2"
+              >
+                <span>Direct Mail</span>
+                <svg className="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
             </div>
           </div>
         </BentoCard>
