@@ -1,6 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "../components/styles/Work.css";
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "motion/react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useScroll } from "motion/react";
 
 const marqueeKeywordsTop = [
   "✦ AirMind AI Smart City",
@@ -60,7 +60,7 @@ const projects = [
     tools: ["React", "Vite", "FastAPI", "Python", "Scikit-learn", "MongoDB Atlas", "OpenWeather API", "Pandas", "React Leaflet"],
     image: "/images/airmind_ai.jpg",
     liveUrl: "https://aqi-air-mind-main.vercel.app/",
-    githubUrl: "https://github.com/kaustavvdeka",
+    githubUrl: "https://github.com/kaustavvdeka/AQI-AirMind",
   },
   {
     id: "02",
@@ -80,8 +80,8 @@ const projects = [
       "A computer-vision-based intelligent transportation system that detects, tracks, and classifies vehicles from live cameras, RTSP streams, images, and videos. Calculates road occupancy, analyzes congestion patterns, generates heatmaps, and logs historical analytics with YOLO, OpenCV, and Streamlit.",
     tools: ["Python", "YOLOv8 / YOLOv11", "OpenCV", "ByteTrack", "Streamlit", "SQLAlchemy", "SQLite", "Plotly", "SciPy"],
     image: "/images/trafficvision_ai.jpg",
-    liveUrl: "https://github.com/kaustavvdeka",
-    githubUrl: "https://github.com/kaustavvdeka",
+    liveUrl: null,
+    githubUrl: "https://github.com/kaustavvdeka/ParkingOccupancyDetectionLive.git",
   },
   {
     id: "03",
@@ -101,8 +101,8 @@ const projects = [
       "An AI-powered plant disease detection system tailored with a Northeast India agricultural focus. Uses transfer learning with MobileNetV2 on ~87,000 images across 38 disease classes to classify plant diseases from leaf photos with regional agronomy context.",
     tools: ["Python", "TensorFlow", "Keras", "MobileNetV2", "Streamlit", "PlantVillage", "NumPy", "Pillow"],
     image: "/images/cropguard_ne.jpg",
-    liveUrl: "https://github.com/kaustavvdeka",
-    githubUrl: "https://github.com/kaustavvdeka",
+    liveUrl: "https://kaustavvdeka-cropdiseasedetection-appapp-kcnscnlk.streamlit.app/",
+    githubUrl: "https://github.com/kaustavvdeka/CropDiseaseDetection",
   },
   {
     id: "04",
@@ -122,7 +122,7 @@ const projects = [
       "A modern EdTech web platform focused on improving the digital learning experience through an interactive, centralized, and student-oriented interface. Features responsive modular learning flows and code study playgrounds.",
     tools: ["React", "JavaScript", "Vercel", "Tailwind CSS", "Responsive UI", "REST APIs"],
     image: "/images/sikhyan.jpg",
-    liveUrl: "https://emon-frontend.vercel.app/",
+    liveUrl: "https://emon-frontend.vercel.app",
     githubUrl: "https://github.com/kaustavvdeka",
   },
   {
@@ -144,11 +144,11 @@ const projects = [
     tools: ["Python", "Streamlit", "Scikit-learn", "Pandas", "Plotly", "NumPy"],
     image: "/images/iitg_ml.jpg",
     liveUrl: "https://iitgmlproject-dmevyx8gbj34vvdy87rhyz.streamlit.app/",
-    githubUrl: "https://github.com/kaustavvdeka",
+    githubUrl: "https://github.com/kaustavvdeka/IIT_G_ML_Project.git",
   },
 ];
 
-function ShowcaseStage({ project }) {
+function ShowcaseStage({ project, onMouseEnter, onMouseLeave }) {
   const cardRef = useRef(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -165,16 +165,18 @@ function ShowcaseStage({ project }) {
     mouseY.set(y);
   }
 
-  function handleMouseLeave() {
+  function handleLocalMouseLeave() {
     mouseX.set(0);
     mouseY.set(0);
+    if (onMouseLeave) onMouseLeave();
   }
 
   return (
     <motion.div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={handleLocalMouseLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       className="project-showcase-card relative w-full"
     >
@@ -257,17 +259,19 @@ function ShowcaseStage({ project }) {
               </a>
             )}
 
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white/[0.09] text-neutral-300 hover:text-white font-medium text-xs uppercase tracking-wider backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:scale-105 active:scale-95"
-            >
-              <span>GitHub</span>
-              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-              </svg>
-            </a>
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/15 bg-white/[0.04] hover:bg-white/[0.09] text-neutral-300 hover:text-white font-medium text-xs uppercase tracking-wider backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:scale-105 active:scale-95"
+              >
+                <span>GitHub</span>
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+              </a>
+            )}
           </div>
         </div>
 
@@ -285,6 +289,28 @@ function ShowcaseStage({ project }) {
 
 const Work = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const sectionRef = useRef(null);
+
+  // Scroll transition: 30° -> 0° rotation as the section enters the viewport
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "center center"],
+  });
+
+  const scrollRotateX = useTransform(scrollYProgress, [0, 1], [30, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.85], [0.2, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [60, 0]);
+
+  // Auto movement / autoplay of card from right to left every 5.5 seconds
+  useEffect(() => {
+    if (isHovered) return;
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+    }, 5500);
+    return () => clearInterval(interval);
+  }, [isHovered]);
 
   const handlePrev = () => {
     setActiveIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
@@ -295,53 +321,29 @@ const Work = () => {
   };
 
   return (
-    <section id="work" className="relative c-space section-spacing scroll-mt-24 overflow-hidden">
+    <section id="work" ref={sectionRef} className="relative c-space section-spacing scroll-mt-24 overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-[140px] pointer-events-none" />
 
-      {/* Header with Navigation Controls */}
+      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4"
+        className="mb-8 text-center md:text-left"
       >
-        <div>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-3 rounded-full border border-cyan-500/30 bg-cyan-950/40 text-xs font-semibold text-cyan-400 tracking-widest uppercase shadow-[0_0_15px_rgba(6,182,212,0.2)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-            <span>Featured Innovations</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-            Selected <span className="bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">Projects</span>
-          </h2>
-          <p className="subtext mt-2 max-w-xl">
-            A showcase of AI smart-city platforms, real-time computer vision systems, deep learning agriculture diagnostics, and EdTech web applications.
-          </p>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-3 rounded-full border border-cyan-500/30 bg-cyan-950/40 text-xs font-semibold text-cyan-400 tracking-widest uppercase shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+          <span>Featured Innovations</span>
         </div>
-
-        {/* Prev / Next Navigation Arrows */}
-        <div className="flex items-center gap-3">
-          <button
-            onClick={handlePrev}
-            className="w-11 h-11 rounded-xl bg-white/[0.04] hover:bg-cyan-500/15 border border-white/10 hover:border-cyan-400/50 text-white hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-md cursor-pointer hover:scale-105 active:scale-95"
-            aria-label="Previous project"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button
-            onClick={handleNext}
-            className="w-11 h-11 rounded-xl bg-white/[0.04] hover:bg-cyan-500/15 border border-white/10 hover:border-cyan-400/50 text-white hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-md cursor-pointer hover:scale-105 active:scale-95"
-            aria-label="Next project"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+          Selected <span className="bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">Projects</span>
+        </h2>
+        <p className="subtext mt-2 max-w-xl">
+          A showcase of AI smart-city platforms, real-time computer vision systems, deep learning agriculture diagnostics, and EdTech web applications.
+        </p>
       </motion.div>
 
       {/* Dual-Directional Moving Marquee Tag Bands */}
@@ -371,33 +373,79 @@ const Work = () => {
         </div>
       </div>
 
-      {/* Main 3D Project Showcase Stage with AnimatePresence */}
-      <AnimatePresence mode="wait">
+      {/* 3D Scroll Rotation Unfold Wrapper (30° -> 0°) */}
+      <div style={{ perspective: 1200 }}>
         <motion.div
-          key={projects[activeIndex].id}
-          initial={{ opacity: 0, y: 20, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: -20, scale: 0.98 }}
-          transition={{ duration: 0.45, ease: "easeOut" }}
+          style={{
+            rotateX: scrollRotateX,
+            scale,
+            opacity,
+            y,
+            transformStyle: "preserve-3d",
+          }}
         >
-          <ShowcaseStage project={projects[activeIndex]} />
-        </motion.div>
-      </AnimatePresence>
-
-      {/* Interactive Project Selector Thumbnails */}
-      <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-        {projects.map((proj, idx) => (
+          {/* Main 3D Project Showcase Stage with Vertically Centered Left/Right Navigation Arrows */}
           <div
-            key={proj.id}
-            onClick={() => setActiveIndex(idx)}
-            className={`project-thumb flex items-center gap-2.5 ${
-              idx === activeIndex ? "project-thumb-active" : ""
-            }`}
+            className="relative w-full"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
-            <span className="font-mono text-xs font-bold text-cyan-400">{proj.id}</span>
-            <span className="text-xs font-medium text-neutral-300 truncate">{proj.title}</span>
+            {/* Left Arrow Button (Vertically centered on the left edge) */}
+            <button
+              onClick={handlePrev}
+              className="absolute -left-3 sm:-left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-[#080c24]/90 hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.8),0_0_15px_rgba(56,189,248,0.25)] cursor-pointer hover:scale-110 active:scale-95 backdrop-blur-xl"
+              aria-label="Previous project"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Right Arrow Button (Vertically centered on the right edge) */}
+            <button
+              onClick={handleNext}
+              className="absolute -right-3 sm:-right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-[#080c24]/90 hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.8),0_0_15px_rgba(56,189,248,0.25)] cursor-pointer hover:scale-110 active:scale-95 backdrop-blur-xl"
+              aria-label="Next project"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Showcase Card with Auto Slide Animation from Right to Left */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={projects[activeIndex].id}
+                initial={{ opacity: 0, x: 60, scale: 0.98 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: -60, scale: 0.98 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+                <ShowcaseStage
+                  project={projects[activeIndex]}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                />
+              </motion.div>
+            </AnimatePresence>
           </div>
-        ))}
+
+          {/* Interactive Project Selector Thumbnails */}
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+            {projects.map((proj, idx) => (
+              <div
+                key={proj.id}
+                onClick={() => setActiveIndex(idx)}
+                className={`project-thumb flex items-center gap-2.5 ${
+                  idx === activeIndex ? "project-thumb-active" : ""
+                }`}
+              >
+                <span className="font-mono text-xs font-bold text-cyan-400">{proj.id}</span>
+                <span className="text-xs font-medium text-neutral-300 truncate">{proj.title}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

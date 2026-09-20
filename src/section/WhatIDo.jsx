@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import "../components/styles/WhatIDo.css";
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { motion, useMotionValue, useSpring, useTransform, useScroll } from "motion/react";
 
 const services = [
   {
@@ -14,6 +14,7 @@ const services = [
     iconColor: "from-cyan-400 to-blue-500",
     glowColor: "rgba(56, 189, 248, 0.3)",
     accentText: "text-cyan-400",
+    alignTilt: -6,
     iconPath: (
       <path
         strokeLinecap="round"
@@ -34,6 +35,7 @@ const services = [
     iconColor: "from-purple-400 to-indigo-500",
     glowColor: "rgba(168, 85, 247, 0.3)",
     accentText: "text-purple-400",
+    alignTilt: 0,
     iconPath: (
       <path
         strokeLinecap="round"
@@ -54,6 +56,7 @@ const services = [
     iconColor: "from-emerald-400 to-teal-500",
     glowColor: "rgba(52, 211, 153, 0.3)",
     accentText: "text-emerald-400",
+    alignTilt: 6,
     iconPath: (
       <path
         strokeLinecap="round"
@@ -67,11 +70,24 @@ const services = [
 
 function ServiceCard({ service, index }) {
   const cardRef = useRef(null);
+
+  // Scroll transition: 30° -> 0° rotation as the card enters the viewport
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "center center"],
+  });
+
+  const scrollRotateX = useTransform(scrollYProgress, [0, 1], [30, 0]);
+  const scrollRotateZ = useTransform(scrollYProgress, [0, 1], [service.alignTilt, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.85], [0.2, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [60, 0]);
+
+  // Mouse tilt tracking
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [8, -8]), { damping: 20, stiffness: 150 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-8, 8]), { damping: 20, stiffness: 150 });
+  const mouseRotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), { damping: 20, stiffness: 150 });
+  const mouseRotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), { damping: 20, stiffness: 150 });
 
   function handleMouseMove(e) {
     if (!cardRef.current) return;
@@ -91,79 +107,80 @@ function ServiceCard({ service, index }) {
   }
 
   return (
-    <motion.div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-      }}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-      className="whatido-card group cursor-pointer"
-    >
-      {/* Cyber Corner Accents */}
-      <div className="cyber-corner-tl" />
-      <div className="cyber-corner-tr" />
-      <div className="cyber-corner-bl" />
-      <div className="cyber-corner-br" />
+    <div ref={cardRef} style={{ perspective: 1200 }}>
+      <motion.div
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          rotateX: scrollRotateX,
+          rotateY: mouseRotateY,
+          rotateZ: scrollRotateZ,
+          scale,
+          opacity,
+          y,
+          transformStyle: "preserve-3d",
+        }}
+        className="whatido-card group cursor-pointer"
+      >
+        {/* Cyber Corner Accents */}
+        <div className="cyber-corner-tl" />
+        <div className="cyber-corner-tr" />
+        <div className="cyber-corner-bl" />
+        <div className="cyber-corner-br" />
 
-      {/* Top Row: Number & Icon */}
-      <div className="flex items-center justify-between mb-6" style={{ transform: "translateZ(30px)" }}>
-        <span className="font-mono text-3xl font-black text-neutral-600 group-hover:text-cyan-400 transition-colors duration-300">
-          {service.index}
-        </span>
+        {/* Top Row: Number & Icon */}
+        <div className="flex items-center justify-between mb-6" style={{ transform: "translateZ(30px)" }}>
+          <span className="font-mono text-3xl font-black text-neutral-600 group-hover:text-cyan-400 transition-colors duration-300">
+            {service.index}
+          </span>
 
-        {/* 3D Glowing Icon Container */}
-        <div
-          className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${service.iconColor} p-0.5 shadow-lg group-hover:scale-110 transition-transform duration-300`}
-          style={{ boxShadow: `0 0 20px ${service.glowColor}` }}
-        >
-          <div className="w-full h-full bg-[#080c24] rounded-[14px] flex items-center justify-center text-white">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {service.iconPath}
-            </svg>
+          {/* 3D Glowing Icon Container */}
+          <div
+            className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${service.iconColor} p-0.5 shadow-lg group-hover:scale-110 transition-transform duration-300`}
+            style={{ boxShadow: `0 0 20px ${service.glowColor}` }}
+          >
+            <div className="w-full h-full bg-[#080c24] rounded-[14px] flex items-center justify-center text-white">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {service.iconPath}
+              </svg>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Card Content */}
-      <div style={{ transform: "translateZ(25px)" }}>
-        <div className="inline-block px-3 py-1 mb-2 rounded-full border border-white/10 bg-white/[0.04] text-[11px] font-semibold text-neutral-400 uppercase tracking-widest">
-          {service.badge}
+        {/* Card Content */}
+        <div style={{ transform: "translateZ(25px)" }}>
+          <div className="inline-block px-3 py-1 mb-2 rounded-full border border-white/10 bg-white/[0.04] text-[11px] font-semibold text-neutral-400 uppercase tracking-widest">
+            {service.badge}
+          </div>
+          <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors duration-300 mt-1">
+            {service.title}
+          </h3>
+          <h4 className={`text-xs font-semibold ${service.accentText} uppercase tracking-wider mt-1 mb-3`}>
+            {service.subtitle}
+          </h4>
+          <p className="text-sm font-light text-neutral-400 leading-relaxed mb-6">
+            {service.description}
+          </p>
         </div>
-        <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors duration-300 mt-1">
-          {service.title}
-        </h3>
-        <h4 className={`text-xs font-semibold ${service.accentText} uppercase tracking-wider mt-1 mb-3`}>
-          {service.subtitle}
-        </h4>
-        <p className="text-sm font-light text-neutral-400 leading-relaxed mb-6">
-          {service.description}
-        </p>
-      </div>
 
-      {/* Skill Tags */}
-      <div className="pt-4 border-t border-white/[0.08]" style={{ transform: "translateZ(20px)" }}>
-        <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-widest mb-2.5">
-          Technologies
-        </p>
-        <div className="flex flex-wrap gap-1.5">
-          {service.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-xs font-medium px-2.5 py-1 rounded-lg bg-white/[0.03] border border-white/[0.08] text-neutral-300 group-hover:border-cyan-500/30 group-hover:bg-cyan-500/5 group-hover:text-cyan-200 transition-all duration-200"
-            >
-              {tag}
-            </span>
-          ))}
+        {/* Skill Tags */}
+        <div className="pt-4 border-t border-white/[0.08]" style={{ transform: "translateZ(20px)" }}>
+          <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-widest mb-2.5">
+            Technologies
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {service.tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-xs font-medium px-2.5 py-1 rounded-lg bg-white/[0.03] border border-white/[0.08] text-neutral-300 group-hover:border-cyan-500/30 group-hover:bg-cyan-500/5 group-hover:text-cyan-200 transition-all duration-200"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
 

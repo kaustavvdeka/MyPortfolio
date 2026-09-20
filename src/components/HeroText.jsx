@@ -104,14 +104,14 @@ const HeroText = () => {
           animate="visible"
           transition={{ duration: 0.6, delay: 1.2 }}
         >
-          <p className="text-lg text-neutral-400 flex items-center gap-2">
+          <div className="text-lg text-neutral-400 flex items-center gap-2">
             <span>Specialized as a</span>
             <FlipWords
               words={interactiveWords}
               className="font-bold text-cyan-400 text-lg"
               duration={2500}
             />
-          </p>
+          </div>
           <p className="text-sm text-neutral-500 mt-1 max-w-lg">
             Blending clean architectural design with interactive 3D WebGL experiences and high-performance applications.
           </p>
