@@ -63,30 +63,31 @@ body {
   background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
 }
 
-/* Light Mode Theme Overrides */
+/* Alternate Cosmic Twilight Theme (Replaces plain white with rich Nebula Sapphire & Aurora Glow) */
 html.light-mode body {
-  background: #f1f5f9;
-  color: #0f172a;
+  background: #0a0e27;
+  color: #f8fafc;
   background-image: 
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(14, 165, 233, 0.15), transparent),
-    radial-gradient(circle at 10% 30%, rgba(99, 102, 241, 0.08), transparent 40%),
-    radial-gradient(circle at 90% 70%, rgba(168, 85, 247, 0.08), transparent 40%),
-    linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(56, 189, 248, 0.22), transparent 65%),
+    radial-gradient(circle at 15% 35%, rgba(168, 85, 247, 0.18), transparent 45%),
+    radial-gradient(circle at 85% 65%, rgba(52, 211, 153, 0.14), transparent 45%),
+    linear-gradient(to right, rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
 }
 
 html.light-mode .text-white {
-  color: #0f172a !important;
+  color: #ffffff !important;
 }
 
 html.light-mode .text-neutral-300,
 html.light-mode .text-neutral-200 {
-  color: #334155 !important;
+  color: #e2e8f0 !important;
 }
 
 html.light-mode .text-neutral-400,
 html.light-mode .subtext {
-  color: #64748b !important;
+  color: #94a3b8 !important;
 }
 
 html.light-mode .bg-\[\#080c24\]\/90,
@@ -94,27 +95,43 @@ html.light-mode .bg-\[\#080c24\],
 html.light-mode .whatido-card,
 html.light-mode .milestone-3d-card,
 html.light-mode .project-showcase-card {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  border-color: rgba(14, 165, 233, 0.25) !important;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06), 0 0 20px rgba(56, 189, 248, 0.1) !important;
+  background: linear-gradient(135deg, rgba(16, 22, 58, 0.88) 0%, rgba(10, 14, 40, 0.94) 100%) !important;
+  border-color: rgba(56, 189, 248, 0.3) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.15) !important;
 }
 
 html.light-mode .bg-white\/\[0\.03\],
 html.light-mode .bg-white\/\[0\.04\] {
-  background-color: rgba(241, 245, 249, 0.8) !important;
-  border-color: rgba(14, 165, 233, 0.18) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(56, 189, 248, 0.22) !important;
 }
 
 html.light-mode .border-white\/\[0\.08\],
 html.light-mode .border-white\/10,
 html.light-mode .border-white\/15 {
-  border-color: rgba(14, 165, 233, 0.2) !important;
+  border-color: rgba(56, 189, 248, 0.22) !important;
 }
 
 html.light-mode .bg-\[\#030412\]\/80,
 html.light-mode .bg-\[\#030412\]\/95 {
-  background-color: rgba(255, 255, 255, 0.92) !important;
-  border-color: rgba(14, 165, 233, 0.25) !important;
+  background-color: rgba(10, 14, 39, 0.92) !important;
+  border-color: rgba(56, 189, 248, 0.3) !important;
+}
+
+html.light-mode .marquee-pill {
+  background: rgba(16, 22, 58, 0.75) !important;
+  border-color: rgba(56, 189, 248, 0.25) !important;
+  color: #e2e8f0 !important;
+}
+
+html.light-mode .project-thumb {
+  background: rgba(16, 22, 58, 0.6) !important;
+  border-color: rgba(56, 189, 248, 0.2) !important;
+}
+
+html.light-mode .project-thumb-active {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.25) 0%, rgba(168, 85, 247, 0.25) 100%) !important;
+  border-color: rgba(56, 189, 248, 0.7) !important;
 }
 
 /* Custom Sleek Scrollbar */

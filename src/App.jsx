@@ -35,11 +35,11 @@ const App = () => {
         <div className="relative z-10 container mx-auto max-w-7xl">
           <Navbar onOpenContact={() => setIsContactOpen(true)} />
           <Hero />
-          <WhatIDo />
-          <Work />
-          <TechStack />
-          <Career />
           <About />
+          <Career />
+          <WhatIDo />
+          <TechStack />
+          <Work />
         </div>
       </LoadingProvider>
     </ThemeProvider>

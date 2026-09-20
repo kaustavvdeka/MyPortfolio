@@ -13,10 +13,10 @@ export const ThemeToggle = ({ className = "" }) => {
       className={`relative p-2 rounded-xl border transition-all duration-300 flex items-center justify-center cursor-pointer ${
         isDark
           ? "bg-[#080c24]/90 border-cyan-500/40 text-cyan-300 hover:border-cyan-300 shadow-[0_0_12px_rgba(56,189,248,0.25)]"
-          : "bg-white/80 border-amber-400/50 text-amber-500 hover:border-amber-500 shadow-[0_0_12px_rgba(251,191,36,0.3)]"
+          : "bg-[#10163a]/90 border-purple-400/50 text-purple-300 hover:border-purple-400 shadow-[0_0_12px_rgba(168,85,247,0.3)]"
       } ${className}`}
-      aria-label="Toggle Light and Dark Mode"
-      title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+      aria-label="Toggle Cosmic Atmosphere"
+      title={isDark ? "Switch to Cosmic Nebula Atmosphere" : "Switch to Deep Space Atmosphere"}
     >
       <motion.div
         key={isDark ? "dark" : "light"}
