@@ -6,11 +6,11 @@ import { ThemeToggle } from "../components/ThemeToggle";
 
 const navItems = [
   { href: "#home", label: "Home", id: "home" },
-  { href: "#whatido", label: "What I Do", id: "whatido" },
-  { href: "#work", label: "Work", id: "work" },
-  { href: "#techstack", label: "Tech Stack", id: "techstack" },
-  { href: "#career", label: "Journey", id: "career" },
   { href: "#about", label: "About", id: "about" },
+  { href: "#career", label: "Journey", id: "career" },
+  { href: "#whatido", label: "What I Do", id: "whatido" },
+  { href: "#techstack", label: "Tech Stack", id: "techstack" },
+  { href: "#work", label: "Projects", id: "work" },
 ];
 
 function NavLink({ item, isActive, onClick }) {
@@ -53,7 +53,7 @@ const NavBar = ({ onOpenContact }) => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      const sections = ["home", "whatido", "work", "techstack", "career", "about"];
+      const sections = ["home", "about", "career", "whatido", "techstack", "work"];
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {
