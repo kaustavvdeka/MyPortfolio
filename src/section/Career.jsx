@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import "../components/styles/Career.css";
 import { motion, useScroll, useTransform } from "motion/react";
+import { useMediaQuery } from "react-responsive";
 
 const educationJourney = [
   {
@@ -59,6 +60,7 @@ const educationJourney = [
 
 function MilestoneCard({ item }) {
   const cardRef = useRef(null);
+  const isDesktop = useMediaQuery({ minWidth: 1024 });
 
   // Scroll transition: maps from 30deg down to 0deg as the element enters and centers in the viewport
   const { scrollYProgress } = useScroll({
@@ -66,25 +68,25 @@ function MilestoneCard({ item }) {
     offset: ["start end", "center center"],
   });
 
-  const rotateX = useTransform(scrollYProgress, [0, 1], [30, 0]);
+  const rotateX = useTransform(scrollYProgress, [0, 1], [isDesktop ? 24 : 8, 0]);
   const rotateZ = useTransform(
     scrollYProgress,
     [0, 1],
-    [item.align === "left" ? 8 : -8, 0]
+    [isDesktop ? (item.align === "left" ? 6 : -6) : 0, 0]
   );
-  const scale = useTransform(scrollYProgress, [0, 1], [0.88, 1]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.92, 1]);
   const opacity = useTransform(scrollYProgress, [0, 0.9], [0.2, 1]);
-  const y = useTransform(scrollYProgress, [0, 1], [60, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
 
   return (
     <div
       ref={cardRef}
-      className={`relative w-full my-8 lg:my-14 flex items-center ${
+      className={`relative w-full my-6 lg:my-14 flex items-center ${
         item.align === "left" ? "lg:justify-start" : "lg:justify-end"
       }`}
       style={{ perspective: 1200 }}
     >
-      {/* 3D Scroll-Rotating Milestone Card (30° -> 0°) */}
+      {/* 3D Scroll-Rotating Milestone Card */}
       <motion.div
         style={{
           rotateX,
@@ -94,7 +96,7 @@ function MilestoneCard({ item }) {
           y,
           transformStyle: "preserve-3d",
         }}
-        className="w-full lg:w-[46%] pl-12 lg:pl-0"
+        className="w-full lg:w-[46%] pl-10 sm:pl-12 lg:pl-0"
       >
         <div className="milestone-3d-card group cursor-pointer">
           {/* Cyber Corner Crosshairs */}

@@ -39,13 +39,13 @@ const HeroText = () => {
         initial="hidden"
         animate="visible"
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full border border-cyan-500/30 bg-cyan-950/40 backdrop-blur-md text-xs sm:text-sm text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.15)] hover:border-cyan-400/50 transition-colors"
+        className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full border border-cyan-500/30 bg-cyan-950/40 backdrop-blur-md text-xs sm:text-sm text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.15)] hover:border-cyan-400/50 transition-colors max-w-full"
       >
-        <span className="relative flex h-2 w-2">
+        <span className="relative flex h-2 w-2 shrink-0">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </span>
-        <span className="font-medium tracking-wide">Available for innovative opportunities</span>
+        <span className="font-medium tracking-wide text-pretty">Available for innovative opportunities</span>
       </motion.div>
 
       {/* Desktop Layout */}
@@ -172,7 +172,7 @@ const HeroText = () => {
           <div>
             <FlipWords
               words={words}
-              className="font-black bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent text-4xl"
+              className="font-black bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent text-3xl sm:text-4xl"
             />
           </div>
           <p className="text-2xl font-bold text-neutral-300">Digital Solutions</p>

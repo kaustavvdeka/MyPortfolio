@@ -11,10 +11,10 @@ function BentoCard({ children, className = "" }) {
     offset: ["start end", "center center"],
   });
 
-  const rotateX = useTransform(scrollYProgress, [0, 1], [30, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.92, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.85], [0.2, 1]);
-  const y = useTransform(scrollYProgress, [0, 1], [50, 0]);
+  const rotateX = useTransform(scrollYProgress, [0, 1], [12, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.85], [0.3, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [30, 0]);
 
   return (
     <div ref={cardRef} className={className} style={{ perspective: 1200 }}>
@@ -254,7 +254,7 @@ const About = () => {
             </div>
 
             {/* Orbiting Interactive Globe */}
-            <div className="absolute -right-16 -bottom-16 w-72 h-72 pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity">
+            <div className="absolute -right-10 -bottom-10 sm:-right-16 sm:-bottom-16 w-56 h-56 sm:w-72 sm:h-72 pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity">
               <Globe />
             </div>
 

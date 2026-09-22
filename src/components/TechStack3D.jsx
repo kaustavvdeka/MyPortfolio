@@ -2,6 +2,7 @@ import React, { useRef, useMemo, useState, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Sparkles, Html } from "@react-three/drei";
 import * as THREE from "three";
+import { useMediaQuery } from "react-responsive";
 
 // ALL Available Tech Stack Icons & Data
 export const techSkills = [
@@ -188,6 +189,8 @@ function SkillOrb({ skill, initialPos, activeFilter }) {
 }
 
 export function TechStack3D({ activeFilter = "all" }) {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
   // Beautiful 3D spatial distribution for all 26 tech spheres across layers
   const positions = useMemo(() => [
     // Row 1 (Top)
@@ -228,14 +231,14 @@ export function TechStack3D({ activeFilter = "all" }) {
   ], []);
 
   return (
-    <div className="relative w-full h-[520px] md:h-[640px] rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-b from-[#06091f]/70 via-[#030412]/85 to-[#030412] backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
+    <div className="relative w-full h-[380px] sm:h-[520px] md:h-[640px] rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-b from-[#06091f]/70 via-[#030412]/85 to-[#030412] backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
       {/* Cosmic background radial glows */}
       <div className="absolute inset-0 bg-radial from-cyan-500/10 via-purple-500/5 to-transparent pointer-events-none" />
       <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-cyan-500/15 blur-[90px] pointer-events-none" />
       <div className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-purple-500/15 blur-[90px] pointer-events-none" />
 
       <Canvas
-        camera={{ position: [0, 0, 8.8], fov: 46 }}
+        camera={{ position: [0, 0, isMobile ? 13.5 : 8.8], fov: isMobile ? 55 : 46 }}
         gl={{ antialias: true, alpha: true }}
       >
         <Suspense fallback={null}>
@@ -263,9 +266,9 @@ export function TechStack3D({ activeFilter = "all" }) {
       </Canvas>
 
       {/* Floating Interactive Hint Pill */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full backdrop-blur-md bg-black/50 border border-white/10 text-xs text-neutral-400 pointer-events-none flex items-center gap-2 shadow-lg">
-        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
-        <span>Hover or touch balls to displace • Release to spring back</span>
+      <div className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full backdrop-blur-md bg-black/50 border border-white/10 text-[10px] sm:text-xs text-neutral-400 pointer-events-none flex items-center gap-1.5 sm:gap-2 shadow-lg max-w-[90%] truncate">
+        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping shrink-0" />
+        <span className="truncate">Hover or touch balls to displace • Release to spring back</span>
       </div>
     </div>
   );

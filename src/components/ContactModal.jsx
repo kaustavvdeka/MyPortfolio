@@ -46,7 +46,7 @@ export const ContactModal = ({ isOpen, onClose }) => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="relative w-full max-w-lg p-6 sm:p-8 rounded-3xl bg-[#080c24] border border-cyan-500/40 shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_30px_rgba(56,189,248,0.25)] z-10 overflow-hidden"
+          className="relative w-full max-w-lg p-5 sm:p-8 rounded-3xl bg-[#080c24] border border-cyan-500/40 shadow-[0_20px_60px_rgba(0,0,0,0.8),0_0_30px_rgba(56,189,248,0.25)] z-10 max-h-[90vh] overflow-y-auto"
         >
           {/* Cyber Corner Crosshairs */}
           <div className="cyber-corner-tl" />

@@ -142,7 +142,7 @@ const NavBar = ({ onOpenContact }) => {
           </nav>
 
           {/* Desktop Controls: Theme Toggle & 3D CTA "Let's Talk" Button */}
-          <div className="hidden sm:flex items-center gap-2.5">
+          <div className="hidden md:flex items-center gap-2.5">
             <ThemeToggle />
 
             <motion.button
@@ -163,7 +163,7 @@ const NavBar = ({ onOpenContact }) => {
           </div>
 
           {/* Mobile Menu Button & Mobile Theme Toggle */}
-          <div className="flex sm:hidden items-center gap-2">
+          <div className="flex md:hidden items-center gap-2">
             <ThemeToggle />
             <motion.button
               onClick={() => setIsOpen(!isOpen)}

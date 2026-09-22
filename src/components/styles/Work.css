@@ -17,6 +17,13 @@
   }
 }
 
+@media (max-width: 640px) {
+  .project-showcase-card {
+    padding: 18px 16px;
+    border-radius: 20px;
+  }
+}
+
 .project-media-frame {
   position: relative;
   border-radius: 20px;

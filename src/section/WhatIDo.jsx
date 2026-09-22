@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import "../components/styles/WhatIDo.css";
 import { motion, useMotionValue, useSpring, useTransform, useScroll } from "motion/react";
+import { useMediaQuery } from "react-responsive";
 
 const services = [
   {
@@ -70,6 +71,7 @@ const services = [
 
 function ServiceCard({ service, index }) {
   const cardRef = useRef(null);
+  const isDesktop = useMediaQuery({ minWidth: 1024 });
 
   // Scroll transition: 30° -> 0° rotation as the card enters the viewport
   const { scrollYProgress } = useScroll({
@@ -77,8 +79,12 @@ function ServiceCard({ service, index }) {
     offset: ["start end", "center center"],
   });
 
-  const scrollRotateX = useTransform(scrollYProgress, [0, 1], [30, 0]);
-  const scrollRotateZ = useTransform(scrollYProgress, [0, 1], [service.alignTilt, 0]);
+  const scrollRotateX = useTransform(scrollYProgress, [0, 1], [isDesktop ? 24 : 8, 0]);
+  const scrollRotateZ = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [isDesktop ? service.alignTilt : 0, 0]
+  );
   const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
   const opacity = useTransform(scrollYProgress, [0, 0.85], [0.2, 1]);
   const y = useTransform(scrollYProgress, [0, 1], [60, 0]);

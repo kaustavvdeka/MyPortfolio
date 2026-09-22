@@ -217,7 +217,7 @@ function ShowcaseStage({ project, onMouseEnter, onMouseLeave }) {
             {/* Architecture Path */}
             <div className="mb-3 px-3 py-1.5 rounded-xl bg-white/[0.03] border border-white/[0.08]">
               <span className="text-[10px] uppercase tracking-wider text-cyan-400 font-bold block mb-0.5">Architecture Flow</span>
-              <span className="text-xs font-mono text-neutral-300">{project.architecture}</span>
+              <span className="text-xs font-mono text-neutral-300 break-words">{project.architecture}</span>
             </div>
 
             {/* Description */}
@@ -298,10 +298,10 @@ const Work = () => {
     offset: ["start end", "center center"],
   });
 
-  const scrollRotateX = useTransform(scrollYProgress, [0, 1], [30, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.85], [0.2, 1]);
-  const y = useTransform(scrollYProgress, [0, 1], [60, 0]);
+  const scrollRotateX = useTransform(scrollYProgress, [0, 1], [10, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.85], [0.3, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [30, 0]);
 
   // Auto movement / autoplay of card from right to left every 5.5 seconds
   useEffect(() => {
@@ -321,7 +321,7 @@ const Work = () => {
   };
 
   return (
-    <section id="work" ref={sectionRef} className="relative c-space section-spacing scroll-mt-24 overflow-hidden">
+    <section id="work" ref={sectionRef} className="relative c-space section-spacing scroll-mt-24">
       {/* Background ambient lighting */}
       <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-[140px] pointer-events-none" />
@@ -373,7 +373,7 @@ const Work = () => {
         </div>
       </div>
 
-      {/* 3D Scroll Rotation Unfold Wrapper (30° -> 0°) */}
+      {/* 3D Scroll Rotation Unfold Wrapper */}
       <div style={{ perspective: 1200 }}>
         <motion.div
           style={{
@@ -390,10 +390,10 @@ const Work = () => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            {/* Left Arrow Button (Vertically centered on the left edge) */}
+            {/* Left Arrow Button */}
             <button
               onClick={handlePrev}
-              className="absolute -left-2 sm:-left-6 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#080c24]/90 hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.8),0_0_15px_rgba(56,189,248,0.25)] cursor-pointer hover:scale-110 active:scale-95 backdrop-blur-xl"
+              className="absolute left-1 sm:-left-4 md:-left-5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-[#080c24]/90 hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.8),0_0_15px_rgba(56,189,248,0.25)] cursor-pointer hover:scale-110 active:scale-95 backdrop-blur-xl"
               aria-label="Previous project"
             >
               <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -401,10 +401,10 @@ const Work = () => {
               </svg>
             </button>
 
-            {/* Right Arrow Button (Vertically centered on the right edge) */}
+            {/* Right Arrow Button */}
             <button
               onClick={handleNext}
-              className="absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-[#080c24]/90 hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.8),0_0_15px_rgba(56,189,248,0.25)] cursor-pointer hover:scale-110 active:scale-95 backdrop-blur-xl"
+              className="absolute right-1 sm:-right-4 md:-right-5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-[#080c24]/90 hover:bg-cyan-500/20 border border-cyan-500/40 hover:border-cyan-300 text-white hover:text-cyan-300 flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.8),0_0_15px_rgba(56,189,248,0.25)] cursor-pointer hover:scale-110 active:scale-95 backdrop-blur-xl"
               aria-label="Next project"
             >
               <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
